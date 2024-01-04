@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Examen.ApplicationCore.Domaine.Chanson>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-action="index">
+    <fieldset>
+        <legend> Recherche</legend>
+        Saisir une vueYtb
+        <input type="text" name="duree" />
+        <input type="submit" value="Search" />
+    </fieldset>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ChansonId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateSortie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StyleMusic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VuesYoutube)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtisteFk)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChansonId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateSortie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StyleMusic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VuesYoutube)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtisteFk)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Artiste", "Artiste", new { id=item.ArtisteFk })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
